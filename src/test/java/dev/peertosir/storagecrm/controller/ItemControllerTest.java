@@ -72,7 +72,7 @@ class ItemControllerTest {
                             title + id,
                             barcode + id,
                             time,
-                            null
+                            123
                     )
             );
             id++;
