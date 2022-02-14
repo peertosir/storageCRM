@@ -1,0 +1,1 @@
+create index barcode_idx on items(barcode);
