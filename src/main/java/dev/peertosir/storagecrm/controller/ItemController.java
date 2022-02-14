@@ -8,6 +8,7 @@ import dev.peertosir.storagecrm.service.ItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,13 +41,13 @@ public class ItemController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Integer createItem(@RequestBody ItemTo itemTo) {
+    public Integer createItem(@Valid @RequestBody ItemTo itemTo) {
         return itemService.createItem(ItemTo.toItem(itemTo));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateItem(@PathVariable("id") Integer id, @RequestBody ItemTo itemTo) {
+    public void updateItem(@PathVariable("id") Integer id, @Valid @RequestBody ItemTo itemTo) {
         try {
             itemService.updateItem(id, ItemTo.toItem(itemTo));
         } catch (ItemNotFoundException ex) {

@@ -50,12 +50,12 @@ public class StorageController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Integer createStorage(@RequestBody StorageTo storageTo) {
+    public Integer createStorage(@Valid @RequestBody StorageTo storageTo) {
         return storageService.createStorage(StorageTo.toStorage(storageTo));
     }
 
     @PutMapping("{id}")
-    public void updateStorage(@PathVariable("id") Integer id, @RequestBody StorageTo storageTo) {
+    public void updateStorage(@PathVariable("id") Integer id, @Valid @RequestBody StorageTo storageTo) {
         logger.info(storageTo.toString());
         try {
             storageService.updateStorage(id, StorageTo.toStorage(storageTo));
